@@ -25,7 +25,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *.
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -50,7 +50,11 @@ class UserController extends Controller
         $form = \FormBuilder::create(UserForm::class);
 
         if(!$form->isValid()){
-            // redirecionar para pagina de criação de usuario.
+
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
 
         $data = $form->getFieldValues();
@@ -69,7 +73,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('admin.users.show',compact('user'));
     }
 
     /**
@@ -80,7 +84,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $form = \FormBuilder::create(UserForm::class,[
+            'url' => route('admin.users.update', ['user' => $user->id ]),
+            'method' => 'PUT',
+            'model' => $user
+        ]);
+
+        return view('admin.users.edit',compact('form'));
     }
 
     /**
@@ -92,7 +102,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $form = \FormBuilder::create(UserForm::class,[
+            'data'=> ['id' => $user->id ]
+        ]);
+
+        if(!$form->isValid()){
+
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
+        }
+
+        $data = array_except($form->getFieldValues(), ['password','role']);
+        $user->fill($data);
+        $user->save();
+
+        $request->session()->flash('message','Usuario atualizado com sucesso.');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -101,8 +128,10 @@ class UserController extends Controller
      * @param  \CodeFlix\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request,User $user)
     {
-        //
+        $user->delete();
+        $request->session()->flash('message','Usuario excluido com sucesso.');
+        return redirect()->route('admin.users.index');
     }
 }
