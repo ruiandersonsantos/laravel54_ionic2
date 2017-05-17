@@ -14,12 +14,16 @@ class CreateUserAdminData extends Migration
     {
         // criando usuario administrador default
 
-        \CodeFlix\Models\User::create([
+        $model = \CodeFlix\Models\User::create([
            'name' => env('ADMIN_DEFAULT_NAME','Administrator'),
            'email' => env('ADMIN_DEFAULT_EMAIL','admin@user.com'),
             'password' => bcrypt(env('ADMIN_DEFAULT_PASSWORD','secret')),
            'role' => \CodeFlix\Models\User::ROLE_ADMIN
         ]);
+
+        $model->verified = true;
+
+        $model->save();
     }
 
     /**

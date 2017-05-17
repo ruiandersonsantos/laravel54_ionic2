@@ -169,6 +169,8 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Jrean\UserVerification\UserVerificationServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -177,6 +179,7 @@ return [
         // CodeFlix\Providers\BroadcastServiceProvider::class,
         CodeFlix\Providers\EventServiceProvider::class,
         CodeFlix\Providers\RouteServiceProvider::class,
+        CodeFlix\Providers\RepositoryServiceProvider::class
 
     ],
 
@@ -232,7 +235,8 @@ return [
         'Button' => Bootstrapper\Facades\Button::class,
         'Navbar' => Bootstrapper\Facades\Navbar::class,
         'Navigation' => Bootstrapper\Facades\Navigation::class,
-        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class
 
     ],
 
