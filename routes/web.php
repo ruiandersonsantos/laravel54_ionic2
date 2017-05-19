@@ -45,6 +45,8 @@ Route::group([
         });
 
         Route::resource('users','UserController');
+        Route::resource('categories','CategoriesController');
+        Route::resource('series','SeriesController');
     });
 
 });

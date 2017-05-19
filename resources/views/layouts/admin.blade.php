@@ -27,7 +27,9 @@
 
             if(Auth::check()){
                 $arrayLink =[
-                  ['link' => route('admin.users.index'), 'title' => 'Usuário'],
+                    ['link' => route('admin.users.index'), 'title' => 'Usuário'],
+                    ['link' => route('admin.categories.index'), 'title' => 'Categorias'],
+                    ['link' => route('admin.series.index'), 'title' => 'Series'],
 
 
                 ];
