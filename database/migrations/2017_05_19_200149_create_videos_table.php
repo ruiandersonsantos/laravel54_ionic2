@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->string('thumb');
+            $table->string('thumb')->nullable();
             $table->integer('duration')->nullable();
             $table->string('file')->nullable();
             $table->boolean('completed')->default(0);
