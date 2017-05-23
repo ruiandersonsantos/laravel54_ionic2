@@ -171,6 +171,7 @@ return [
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
+        Folklore\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -237,7 +238,8 @@ return [
         'Navigation' => Bootstrapper\Facades\Navigation::class,
         'MediaObject' => Bootstrapper\Facades\MediaObject::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
-        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class
+        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
+        'Image' => Folklore\Image\Facades\Image::class,
 
     ],
 
