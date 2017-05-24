@@ -12,8 +12,9 @@ $tabs = [
         'disabled' => !isset($video)?true:false
     ],
     [
-        'title' => 'Video e Thumbmail',
-        'link' => ''
+        'title' => 'Vídeos e Thumbnail',
+        'link' => !isset($video)?'#':route('admin.videos.uploads.create',['video' => $video->id]),
+        'disabled' => !isset($video)?true:false
     ]
 ];
 ?>
