@@ -14,12 +14,10 @@ trait VideoPaths
         return "videos/{$this->id}";
     }
 
-    public function getThumbAssetAttribute(){
-        //return route('admin.series.thumb_asset',['serie'=>$this->id]);
-    }
-
-    public function getThumbSmallAssetAttribute(){
-       // return route('admin.series.thumb_small_asset',['serie'=>$this->id]);
+    public function getFileAssetAttribute(){
+        return $this->isLocaDriver()?
+            route('admin.videos.thumb_asset',['video'=>$this->id]):
+            $this->file_path;
     }
 
     public function getThumbDefaultAttribute(){
@@ -31,6 +29,9 @@ trait VideoPaths
     }
 
     public function getFilePathAttribute(){
-        return $this->getAbsolutePath($this->getStorage(),$this->file_relative);
+        if($this->file_relative){
+            return $this->getAbsolutePath($this->getStorage(),$this->file_relative);
+        }
+        return false;
     }
 }
