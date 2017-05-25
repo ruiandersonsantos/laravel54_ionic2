@@ -13,6 +13,7 @@ class VideoForm extends Form
                 'label' => 'Titulo',
                 'rules' => 'required|max:255'
             ])
+
             ->add('description', 'textarea',[
                 'label' => 'Descrição',
                 'rules' => "required"

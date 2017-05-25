@@ -14,7 +14,7 @@ use Illuminate\Http\UploadedFile;
 
 trait VideoUploads
 {
-    use Uploads;
+
 
     public function uploadFile($id, UploadedFile $file){
         $model = $this->find($id);
