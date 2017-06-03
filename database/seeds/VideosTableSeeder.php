@@ -19,7 +19,7 @@ class VideosTableSeeder extends Seeder
         $repository = app(VideoRepository::class);
         $collectionThumbs = $this->getThumbs();
         $collectionVideos = $this->getVideos();
-        factory(\CodeFlix\Models\Video::class,1)
+        factory(\CodeFlix\Models\Video::class,5)
             ->create()
             ->each(function ($video) use($series, $categories,$repository,$collectionThumbs,$collectionVideos){
 
