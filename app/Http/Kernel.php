@@ -2,6 +2,7 @@
 
 namespace CodeFlix\Http;
 
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 
@@ -19,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \CodeFlix\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Barryvdh\Cors\HandleCors::class
     ];
 
     /**
