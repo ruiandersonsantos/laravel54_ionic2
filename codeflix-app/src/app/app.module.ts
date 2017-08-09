@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {HttpModule} from "@angular/http";
 import {JwtClient} from "../providers/jwt-client";
 import {IonicStorageModule} from "@ionic/storage";
+import {JwtHelper} from "angular2-jwt";
 
 
 
@@ -40,6 +41,7 @@ import {IonicStorageModule} from "@ionic/storage";
     StatusBar,
     SplashScreen,
     JwtClient,
+    JwtHelper,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
