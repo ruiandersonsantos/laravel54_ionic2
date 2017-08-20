@@ -40,6 +40,12 @@ export class Auth {
     });
   }
 
+  check():Promise<Boolean>{
+      return this.user().then( user =>{
+          return user !== null;
+      })
+  }
+
   login({email,password}):Promise<Object>{
     return this.jwtCliente.acessToken({email, password})
         .then(()=>{
@@ -53,4 +59,6 @@ export class Auth {
             this._user = null;
           })
   }
+
+
 }

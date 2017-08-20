@@ -5,13 +5,6 @@ import {Auth} from "../../providers/auth";
 import {HomePage} from "../home/home";
 
 
-
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-Login',
@@ -62,6 +55,10 @@ export class LoginPage {
       this.menuCrt.enable(true);
       this.navCtrl.push(HomePage);
 
+  }
+
+  irParaHome(){
+      this.navCtrl.push(HomePage);
   }
 
 }
