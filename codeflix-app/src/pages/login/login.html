@@ -10,10 +10,10 @@
 
             <form (submit)="login()">
               <ion-item>
-                <ion-input [(ngModel)]="email" type="text" name="email" placeholder="E-mail"></ion-input>
+                <ion-input [(ngModel)]="user.email" type="text" name="email" placeholder="E-mail"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input [(ngModel)]="password" type="password" name="password" placeholder="Password"></ion-input>
+                <ion-input [(ngModel)]="user.password" type="password" name="password" placeholder="Password"></ion-input>
               </ion-item>
 
               <button ion-button type="submit" block color="light">Login</button>
