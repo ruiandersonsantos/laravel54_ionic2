@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
- Route::middleware('auth:api')->get('/user', function (Request $request) {
+ /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 
 \ApiRoute::version('v1',function(){
@@ -51,6 +51,9 @@ use Illuminate\Http\Request;
             // Rota de testes
             ApiRoute::get('test',function (){
                 return "Opa !! Estou autenticado";
+            });
+            ApiRoute::get('/user',function(Request $request){
+                return $request->user('api');
             });
         });
 

@@ -50,6 +50,10 @@ export class LoginPage {
 
   }
 
+  loginFacebook(){
+    this.auth.loginFacebook();
+  }
+
 
   afterLogin(){
       this.menuCrt.enable(true);

@@ -61,6 +61,11 @@ export class JwtClient {
 
   }
 
+  setToken(token:string){
+      this._token = token;
+      this.storage.set(ENV.TOKEN_NAME,this._token);
+  }
+
   acessToken(jwtCredentials:JwtCredentials): Promise<string>{
 
     return this.authHttp.post(`${ENV.API_URL}/access_token`,jwtCredentials)

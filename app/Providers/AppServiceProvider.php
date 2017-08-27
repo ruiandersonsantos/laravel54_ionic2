@@ -6,6 +6,8 @@ use Dingo\Api\Exception\Handler;
 use CodeFlix\Models\Video;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\ServiceProvider;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -61,5 +63,11 @@ class AppServiceProvider extends ServiceProvider
         $handler->register(function(AuthenticationException $exception){
             return response()->json(['error' => 'Unauthenticated'],401);
         });
+
+        $handler->register(function(JWTException $exception){
+            return response()->json(['error' => $exception->getMessage()],401);
+        });
+
+
     }
 }
