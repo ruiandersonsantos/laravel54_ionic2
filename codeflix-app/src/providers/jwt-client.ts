@@ -19,20 +19,14 @@ export class JwtClient {
       public storage:Storage,
       public jwtHelper: JwtHelper
   ) {
-        this.getToken().then((token)=>{
-           //console.log(token);
-        });
 
-        this.getPayload().then((payload) =>{
-            //console.log(payload);
-        })
   }
 
   getPayload(): Promise<Object>{
 
       return new Promise((resolve)=>{
           if(this._payload){
-              //resolve(this._payload);
+              resolve(this._payload);
           }
 
           this.storage.get('token').then((token) => {
@@ -61,9 +55,10 @@ export class JwtClient {
 
   }
 
-  setToken(token:string){
+  setToken(token:string):string{
       this._token = token;
       this.storage.set(ENV.TOKEN_NAME,this._token);
+      return this._token;
   }
 
   acessToken(jwtCredentials:JwtCredentials): Promise<string>{

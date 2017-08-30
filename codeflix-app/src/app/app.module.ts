@@ -17,6 +17,8 @@ import {Env} from "../models/env";
 import {DefaultXHRBackend} from "../providers/default-xhr-backend";
 import {Redirector} from "../providers/redirector";
 import {Facebook} from "@ionic-native/facebook";
+import {UserResource} from "../providers/resources/user-resource";
+import {MySettingsPage} from "../pages/my-settings/my-settings";
 
 declare var ENV: Env;
 
@@ -25,7 +27,8 @@ declare var ENV: Env;
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    MySettingsPage
   ],
   imports: [
     HttpModule,
@@ -33,7 +36,8 @@ declare var ENV: Env;
     IonicModule.forRoot(MyApp,{},{
       links:[
         {component: LoginPage, name: 'LoginPage',segment: 'login'},
-        {component: HomePage, name: 'HomePage',segment: 'home'}
+        {component: HomePage, name: 'HomePage',segment: 'home'},
+        {component: MySettingsPage, name: 'MySettingsPage',segment: 'Settings'}
       ]
     }),
     IonicStorageModule.forRoot({
@@ -45,7 +49,8 @@ declare var ENV: Env;
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    MySettingsPage
   ],
   providers: [
     StatusBar,
@@ -55,6 +60,7 @@ declare var ENV: Env;
     Auth,
     Redirector,
     Facebook,
+    UserResource,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {
       provide: AuthHttp,
@@ -70,7 +76,8 @@ declare var ENV: Env;
           return new AuthHttp(authConfig, http);
       }
     },
-    {provide: XHRBackend, useClass: DefaultXHRBackend}
+    {provide: XHRBackend, useClass: DefaultXHRBackend},
+
   ]
 })
 export class AppModule {}

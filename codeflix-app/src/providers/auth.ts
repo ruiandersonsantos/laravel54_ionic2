@@ -4,6 +4,7 @@ import {JwtClient} from "./jwt-client";
 import {JwtPayload} from "../models/jwt-payload";
 import 'rxjs/add/operator/toPromise';
 import {Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
+import {UserResource} from "./resources/user-resource";
 
 /*
   Generated class for the Auth provider.
@@ -16,10 +17,10 @@ export class Auth {
 
   private _user = null;
 
-  constructor(public jwtCliente: JwtClient, public fb: Facebook) {
-   this.user().then((user) =>{
-       console.log(user);
-   })
+  constructor(public jwtCliente: JwtClient,
+              public fb: Facebook,
+              public userResource: UserResource) {
+
   }
 
   user():Promise<Object>{
@@ -54,10 +55,13 @@ export class Auth {
         })
   }
 
-  loginFacebook(){
-      this.fb.login(['email'])
+  loginFacebook():Promise<string>{
+     return this.fb.login(['email'])
           .then((response: FacebookLoginResponse) =>{
-            console.log(response);
+            let acessToken = response.authResponse.accessToken;
+            return this.userResource
+                .register(acessToken)
+                .then(token => this.jwtCliente.setToken(token));
           });
   }
 

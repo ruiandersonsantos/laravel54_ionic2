@@ -72,6 +72,7 @@ class UserController extends Controller
         }
 
         $data = $form->getFieldValues();
+        $data['role'] = User::ROLE_ADMIN;
         $this->repository->create($data);
         $request->session()->flash('message','Usuario '.$data['name']. ' criado com sucesso.');
         return redirect()->route('admin.users.index');

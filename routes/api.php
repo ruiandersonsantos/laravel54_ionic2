@@ -38,6 +38,8 @@ use Illuminate\Http\Request;
             'expires' => 1
         ])->name('.refresh_token');
 
+        ApiRoute::post('/register','RegisterUsersController@store');
+
         // Grupo de rotas protegidos por autenticação e limite de acesso
         ApiRoute::group([
             'middleware'=> ['api.throttle','api.auth'],
@@ -52,9 +54,13 @@ use Illuminate\Http\Request;
             ApiRoute::get('test',function (){
                 return "Opa !! Estou autenticado";
             });
+
             ApiRoute::get('/user',function(Request $request){
                 return $request->user('api');
             });
+
+            // Rota que faz o logout da API
+            ApiRoute::patch('/user/settings','UsersController@updateSettings');
         });
 
     });
