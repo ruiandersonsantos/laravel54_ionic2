@@ -18,11 +18,11 @@ export class HomePage {
 
   ionViewDidLoad(){
 
-      this.authHttp.get('http://localhost:8000/api/user')
-          .toPromise()
-          .then(()=>{
-              console.log('primeira');
-          });
+      // this.authHttp.get('http://localhost:8081/api/user')
+      //     .toPromise()
+      //     .then(()=>{
+      //         console.log('primeira');
+      //     });
       /*
     setInterval(()=>{
 
