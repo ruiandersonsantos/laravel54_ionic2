@@ -32,7 +32,12 @@
                     ['link' => route('admin.categories.index'), 'title' => 'Categorias'],
                     ['link' => route('admin.series.index'), 'title' => 'Series'],
                     ['link' => route('admin.videos.index'), 'title' => 'Videos'],
-
+                    [
+                        'Vendas',
+                        [
+                            ['link' => route('admin.plans.index'), 'title' => 'Plano']
+                        ]
+                    ]
 
                 ];
 
